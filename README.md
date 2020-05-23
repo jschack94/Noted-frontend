@@ -1,27 +1,34 @@
-Noted
+<strong> Noted </strong> <p>
 
-Noted is a...
+Noted is a... <p>
 
-View the Back End Repository Here: https://github.com/jschack94/tasks-backend
+<strong> Backend Repo Here:  </strong>
 
-Current Features<p>
+<strong> Current Features: </strong> <p>
 A user can...<p>
 A user can...<p>
+A user can...<p>
+A user can...<p>
+  
 
-Demo
+<strong> Problems Solved: </strong> <p>
+  
+<strong> Tools Used: </strong> <p>
+
+<strong> Demo: </strong> <p>
 View Demo on YouTube Here:
 
-Contributing:
-Fork this repository.
-Create a branch: git checkout -b <branch_name>.
-Make your changes and commit them: git commit -m '<commit_message>'
-Push to the original branch: git push origin <project_name>/<location>
-Create the pull request.
+<strong> Contributing: </strong> <p>
+Fork this repository. <p>
+Create a branch: git checkout -b <branch_name>. <p>
+Make your changes and commit them: git commit -m '<commit_message>' <p>
+Push to the original branch: git push origin <project_name>/<location> <p>
+Create the pull request. <p>
 Alternatively see the GitHub documentation on creating a pull request.
 
-Contact
-My e-mail is jschack94@gmail.com. visit my LinkedIn at https://www.linkedin.com/in/jonathan-schack/
+<strong> Contact: </strong> <p>
+My e-mail is jschack94@gmail.com. <p> Visit my LinkedIn at https://www.linkedin.com/in/jonathan-schack/
 
-License
+<strong> License: </strong>
 This project uses the following license: MIT License.
 
