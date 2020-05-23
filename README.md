@@ -2,7 +2,7 @@
 
 Noted is a... <p>
 
-<strong> Backend Repo Here:  </strong>
+<strong> Backend Repo Here: https://github.com/jschack94/Noted-app-backend-rails  </strong>
 
 <strong> Current Features: </strong> <p>
 A user can...<p>
