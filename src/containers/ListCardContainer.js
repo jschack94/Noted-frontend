@@ -30,7 +30,7 @@ class ListCardContainer extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    fetch(`http://localhost:3000/tasks`, {
+    fetch(`https://chello-api.herokuapp.com/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

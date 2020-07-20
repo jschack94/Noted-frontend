@@ -19,25 +19,9 @@ class App extends Component {
     projectsLoaded: false
   };
 
-  componentDidMount() {
-    // Check local storage for a token
-    this.checkForToken();
-    this.checkForProjectId();
-  }
+  
 
-  checkForToken = () => {
-    localStorage.token
-      ? this.getUserFromToken()
-      : console.log("You're not logged in, buddy!!");
-  };
-
-  checkForProjectId = () => {
-    if (localStorage.projectId && document.URL.includes("/projects")) {
-      this.loadCurrentProject(localStorage.projectId)
-    }
-  }
-
-  logInUserByToken = () => {
+logInUserByToken = () => {
     fetch("http://localhost:3000/persist", {
       methodL: "GET",
       headers: {
@@ -71,7 +55,7 @@ class App extends Component {
 
   // Get user from token
   getUserFromToken = () => {
-    fetch("http://localhost:3000/persist", {
+    fetch("https://chello-api.herokuapp.com/persist", {
       method: "GET",
       headers: {
         'Authorization': localStorage.token,
@@ -97,7 +81,7 @@ class App extends Component {
   };
 
   logInUser = (username, password) => {
-    fetch("http://localhost:3000/persist", {
+    fetch("https://chello-api.herokuapp.com/tokens", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +110,7 @@ class App extends Component {
   fetchprojectList = () => {
     // debugger
     // if (!this.props.userLoggedIn) return;
-    fetch(`http://localhost:3000/users/${this.state.currentUser.user_id}`, {
+    fetch(`https://chello-api.herokuapp.com/users/${this.state.currentUser.user_id}`, {
       headers: {
         Authorization: localStorage.token
       }
@@ -142,8 +126,9 @@ class App extends Component {
       });
   };
 
+
   loadCurrentProject = projectId => {
-    fetch(`http://localhost:3000/projects/${projectId}`, {
+    fetch(`https://chello-api.herokuapp.com/projects/${projectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -169,8 +154,8 @@ class App extends Component {
     })
   }
 
-  registerUser = (name, username, email, password) => {
-    fetch('http://localhost:3000/users', {
+ registerUser = (name, username, email, password) => {
+    fetch('https://chello-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -196,7 +181,6 @@ class App extends Component {
         );
       });
   };
-
   render() {
     return this.state.login ? (
       <Router>

@@ -34,7 +34,7 @@ class ListContainer extends Component {
     e.preventDefault();
     let project_id = document.URL.split('projects/')[1]
     console.log(this.props)
-    fetch(`http://localhost:3000/lists`, {
+    fetch(`https://chello-api.herokuapp.com/lists`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
