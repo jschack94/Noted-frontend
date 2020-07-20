@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./containers/Sidebar";
-
 import ProjectContainer from "./containers/ProjectContainer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -13,30 +12,54 @@ import ListContainer from "./containers/ListContainer";
 class App extends Component {
   state = {
     login: false,
-    currentUser: [],
+    currentUser: {},
     projectList: [],
-    currentProject: [],
+    currentProject: {},
     currentProjectLoaded: false,
     projectsLoaded: false
   };
 
   componentDidMount() {
     // Check local storage for a token
-   
+    this.checkForToken();
     this.checkForProjectId();
   }
 
- 
+  checkForToken = () => {
+    localStorage.token
+      ? this.getUserFromToken()
+      : console.log("You're not logged in, buddy!!");
+  };
 
   checkForProjectId = () => {
     if (localStorage.projectId && document.URL.includes("/projects")) {
       this.loadCurrentProject(localStorage.projectId)
     }
-    console.log(localStorage.projectId)
-debugger
   }
 
- 
+  logInUserByToken = () => {
+    fetch("https://chello-api.herokuapp.com/persist", {
+      methodL: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.token,
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(userInfo => {
+        this.setState(
+          {
+            login: true,
+            currentUser: userInfo
+          },
+          () => {
+            // Set the user's projects to true
+            this.fetchprojectList();
+          }
+        );
+      });
+  };
 
   logOutUser = () => {
     localStorage.clear()
@@ -46,10 +69,35 @@ debugger
     })
   }
 
- 
+  // Get user from token
+  getUserFromToken = () => {
+    fetch("https://chello-api.herokuapp.com/persist", {
+      method: "GET",
+      headers: {
+        'Authorization': localStorage.token,
+        "Content-Type": "application/json",
+        'Accept': "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(userInfo => {
+        this.setState(
+          {
+            login: true,
+            currentUser: userInfo
+          },
+          () => {
+            console.log(this.state.currentUser);
+            if (this.state.login) {
+              this.logInUserByToken();
+            }
+          }
+        );
+      });
+  };
 
   logInUser = (username, password) => {
-    fetch("http://localhost:3000//login", {
+    fetch("https://chello-api.herokuapp.com/tokens", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,25 +126,24 @@ debugger
   fetchprojectList = () => {
     // debugger
     // if (!this.props.userLoggedIn) return;
-    fetch(`http://localhost:3000/users/${this.state.currentUser.user.data.id}`, {
+    fetch(`https://chello-api.herokuapp.com/users/${this.state.currentUser.user_id}`, {
       headers: {
         Authorization: localStorage.token
       }
     })
       .then(resp => resp.json())
       .then(respData => {
-        
+        // console.log(data)
+        // debugger;
         this.setState({
           projectList: respData.data.attributes.projects,
           projectsLoaded: true
         });
-      
       });
-      
   };
 
   loadCurrentProject = projectId => {
-    fetch(`http://localhost:3000/projects/${projectId}`, {
+    fetch(`https://chello-api.herokuapp.com/projects/${projectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -104,16 +151,16 @@ debugger
         Authorization: localStorage.token
       }
     })
-    .then(res => res.json())
-    .then(fetchData => {
-      let { attributes } = fetchData.data;
-      this.setState({
-        currentProject: {...attributes},
-        currentProjectLoaded: true
-      });
-    })
-    .then(localStorage.setItem("projectId", projectId))
-};
+      .then(res => res.json())
+      .then(fetchData => {
+        let { attributes } = fetchData.data;
+        this.setState({
+          currentProject: {...attributes},
+          currentProjectLoaded: true
+        });
+      })
+      .then(localStorage.setItem("projectId", projectId))
+  };
 
   resetCurrentProject = () => {
     this.setState({
@@ -123,7 +170,7 @@ debugger
   }
 
   registerUser = (name, username, email, password) => {
-    fetch('http://localhost:3000/users', {
+    fetch('https://chello-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

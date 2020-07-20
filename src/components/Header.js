@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
-  // currentUser = () => {
-  //   currentFirstLetter
-  // }
+
 
   handleClick = () => {
     this.props.logOutUser()

@@ -14,7 +14,7 @@ export class Project extends Component {
     this.setState({
       projectCreationMode: true
     })
-     debugger;
+    // debugger;
     // Show the form to add a
   }
 

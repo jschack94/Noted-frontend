@@ -10,7 +10,13 @@ class ListContainer extends Component {
     clicked: false
   }
 
+  // this.props.currentProject.lists.map
 
+  // handleClick = () => {
+  //   this.setState({
+  //     listCards: [ {name: 'New Taskslakjshdflkajshdflkjahsdflkjhasdflkjhasdflkjhasdflkjhasdflkhjasd'}, ...this.state.listCards ]
+  //   })
+  // }
 
   handleClick = () => {
     this.setState({
@@ -24,10 +30,10 @@ class ListContainer extends Component {
     })
   }
 
-  handleSubmit = (e, name) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     let project_id = document.URL.split('projects/')[1]
-   
+    console.log(this.props)
     fetch(`http://localhost:3000/lists`, {
       method: 'POST',
       headers: {
@@ -40,18 +46,27 @@ class ListContainer extends Component {
         name: this.state.inputValue,
       })
     })
-   
     .then(resp => resp.json())
     .then(respData => {
-      console.log(respData)
-      debugger
-      
+      // debugger;
+      // Use destructuring to reform the data
+      let id = respData.data.id
+      let { name, project_id, tasks } = respData.data.attributes
+      let newListCardObj = { 
+        id,
+        name,
+        tasks
+      }
       this.setState({
-        listCards: [...this.state.listCards, respData.data.attributes],
+        listCards: [...this.state.listCards, newListCardObj],
         clicked: false,
         inputValue: ''
       })
     })
+
+    // this.setState({
+    //   listCards: [{name: this.state.inputValue}, ...this.state.listCards]
+    // })
   }
 
 

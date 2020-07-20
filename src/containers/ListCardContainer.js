@@ -44,11 +44,15 @@ class ListCardContainer extends Component {
     })
       .then(resp => resp.json())
       .then(respData => {
-       console.log(respData)
-       debugger
-        
+        let id = respData.data.id
+        let { content, list_id } = respData.data.attributes
+        let newTaskCardObj = {
+          id,
+          content,
+          list_id
+        }
         this.setState({
-          taskCards: [...this.state.taskCards, respData.data.attributes],
+          taskCards: [...this.state.taskCards, newTaskCardObj],
           clicked: false,
           inputValue: ''
         })

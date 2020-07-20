@@ -9,9 +9,9 @@ class ProjectContainer extends Component {
   // takes the project id and a name for the project.
   createNewProject = name => {
     // Get the current user's ID
-    const user_id = this.props.currentUser.user.data.id;
+    const user_id = this.props.currentUser.user_id;
     // Make the post request
-    fetch('http://localhost:3000/projects', {
+    fetch('https://chello-api.herokuapp.com/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ class ProjectContainer extends Component {
         let { id, attributes } = projectData.data
         let newProjectObj = { id, ...attributes }
           this.setState({
-            projectList: [newProjectObj, ...this.props.projectList]
+            projectList: [newProjectObj, ...this.state.projectList]
           });
       });
   };
