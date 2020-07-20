@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   logInUserByToken = () => {
-    fetch("https://chello-api.herokuapp.com/persist", {
+    fetch("http://localhost:3000/persist", {
       methodL: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ class App extends Component {
 
   // Get user from token
   getUserFromToken = () => {
-    fetch("https://chello-api.herokuapp.com/persist", {
+    fetch("http://localhost:3000/persist", {
       method: "GET",
       headers: {
         'Authorization': localStorage.token,
@@ -97,7 +97,7 @@ class App extends Component {
   };
 
   logInUser = (username, password) => {
-    fetch("https://chello-api.herokuapp.com/tokens", {
+    fetch("http://localhost:3000/persist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ class App extends Component {
   fetchprojectList = () => {
     // debugger
     // if (!this.props.userLoggedIn) return;
-    fetch(`https://chello-api.herokuapp.com/users/${this.state.currentUser.user_id}`, {
+    fetch(`http://localhost:3000/users/${this.state.currentUser.user_id}`, {
       headers: {
         Authorization: localStorage.token
       }
@@ -143,7 +143,7 @@ class App extends Component {
   };
 
   loadCurrentProject = projectId => {
-    fetch(`https://chello-api.herokuapp.com/projects/${projectId}`, {
+    fetch(`http://localhost:3000/projects/${projectId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -170,7 +170,7 @@ class App extends Component {
   }
 
   registerUser = (name, username, email, password) => {
-    fetch('https://chello-api.herokuapp.com/users', {
+    fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
