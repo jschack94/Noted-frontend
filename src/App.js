@@ -19,10 +19,26 @@ class App extends Component {
     projectsLoaded: false
   };
 
-  
+  componentDidMount() {
+    // Check local storage for a token
+    this.checkForToken();
+    this.checkForProjectId();
+  }
 
-logInUserByToken = () => {
-    fetch("http://localhost:3000/persist", {
+  checkForToken = () => {
+    localStorage.token
+      ? this.getUserFromToken()
+      : console.log("You're not logged in, buddy!!");
+  };
+
+  checkForProjectId = () => {
+    if (localStorage.projectId && document.URL.includes("/projects")) {
+      this.loadCurrentProject(localStorage.projectId)
+    }
+  }
+
+  logInUserByToken = () => {
+    fetch("https://chello-api.herokuapp.com/persist", {
       methodL: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +142,6 @@ logInUserByToken = () => {
       });
   };
 
-
   loadCurrentProject = projectId => {
     fetch(`https://chello-api.herokuapp.com/projects/${projectId}`, {
       method: "GET",
@@ -154,7 +169,7 @@ logInUserByToken = () => {
     })
   }
 
- registerUser = (name, username, email, password) => {
+  registerUser = (name, username, email, password) => {
     fetch('https://chello-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
@@ -181,6 +196,7 @@ logInUserByToken = () => {
         );
       });
   };
+
   render() {
     return this.state.login ? (
       <Router>
