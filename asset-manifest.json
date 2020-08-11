@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Noted-app-frontend-react-redux/static/css/main.ae26f2ae.chunk.css",
-    "main.js": "/Noted-app-frontend-react-redux/static/js/main.54a7cf7f.chunk.js",
-    "main.js.map": "/Noted-app-frontend-react-redux/static/js/main.54a7cf7f.chunk.js.map",
-    "runtime-main.js": "/Noted-app-frontend-react-redux/static/js/runtime-main.fcbedd10.js",
-    "runtime-main.js.map": "/Noted-app-frontend-react-redux/static/js/runtime-main.fcbedd10.js.map",
-    "static/js/2.8b48e6e9.chunk.js": "/Noted-app-frontend-react-redux/static/js/2.8b48e6e9.chunk.js",
-    "static/js/2.8b48e6e9.chunk.js.map": "/Noted-app-frontend-react-redux/static/js/2.8b48e6e9.chunk.js.map",
-    "index.html": "/Noted-app-frontend-react-redux/index.html",
-    "precache-manifest.ce37a5fc68148cff84157151930fc434.js": "/Noted-app-frontend-react-redux/precache-manifest.ce37a5fc68148cff84157151930fc434.js",
-    "service-worker.js": "/Noted-app-frontend-react-redux/service-worker.js",
-    "static/css/main.ae26f2ae.chunk.css.map": "/Noted-app-frontend-react-redux/static/css/main.ae26f2ae.chunk.css.map",
-    "static/js/2.8b48e6e9.chunk.js.LICENSE.txt": "/Noted-app-frontend-react-redux/static/js/2.8b48e6e9.chunk.js.LICENSE.txt"
+    "main.css": "/Noted-frontend/static/css/main.ae26f2ae.chunk.css",
+    "main.js": "/Noted-frontend/static/js/main.54a7cf7f.chunk.js",
+    "main.js.map": "/Noted-frontend/static/js/main.54a7cf7f.chunk.js.map",
+    "runtime-main.js": "/Noted-frontend/static/js/runtime-main.b603c943.js",
+    "runtime-main.js.map": "/Noted-frontend/static/js/runtime-main.b603c943.js.map",
+    "static/js/2.8b48e6e9.chunk.js": "/Noted-frontend/static/js/2.8b48e6e9.chunk.js",
+    "static/js/2.8b48e6e9.chunk.js.map": "/Noted-frontend/static/js/2.8b48e6e9.chunk.js.map",
+    "index.html": "/Noted-frontend/index.html",
+    "precache-manifest.8f7c3c559857523df9170c8df3d7c345.js": "/Noted-frontend/precache-manifest.8f7c3c559857523df9170c8df3d7c345.js",
+    "service-worker.js": "/Noted-frontend/service-worker.js",
+    "static/css/main.ae26f2ae.chunk.css.map": "/Noted-frontend/static/css/main.ae26f2ae.chunk.css.map",
+    "static/js/2.8b48e6e9.chunk.js.LICENSE.txt": "/Noted-frontend/static/js/2.8b48e6e9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fcbedd10.js",
+    "static/js/runtime-main.b603c943.js",
     "static/js/2.8b48e6e9.chunk.js",
     "static/css/main.ae26f2ae.chunk.css",
     "static/js/main.54a7cf7f.chunk.js"
